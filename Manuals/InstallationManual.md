@@ -21,10 +21,19 @@ For the steps of the installation process itself, follow the enumeration:
  
  2. As a first instance, build the application that will be analysed with the methodology in order to generate the r folder of the project. 
  
-Note 1: r folder can be found in app/build/generated/.../r/ 
+ 
+**Note:** r folder can be found in app/build/generated/.../r/ 
+
 
  3. Open Kadabra Java Weaver.
  
  4. On the **middle** tab (inserir), select the SocketV2.Lara file as the configuration script.
 
-Note 2: the final
+
+**Note:** the final configuration should match the following image
+
+<img src="/../Images/test1.png" alt="My cool logo"/>
+
+
+
+ 5. 
