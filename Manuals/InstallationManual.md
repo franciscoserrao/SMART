@@ -30,7 +30,8 @@ For the steps of the installation process itself, follow the enumeration:
  4. On the **middle** tab (inserir), select the SocketV2.Lara file as the configuration script.
 
 
-**Note:** the final configuration should match the following image
+**<span style="color: red"> Note</span>
+:** the final configuration should match the following image
 
 <img src="/../Images/test1.png" alt="My cool logo"/>
 
