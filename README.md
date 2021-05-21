@@ -3,9 +3,9 @@ This repository contains the code that implements a methodology for reverse engi
 
 The instalation and usage guides are provided bellow for better understanding.
 
-[Installation Guide](InstallationManual.md)
+[Installation Guide](Manuals/InstallationManual.md)
 
-[Usage Guide](UserManual.md)
+[Usage Guide](Manuals/UserManual.md)
 
 
 
