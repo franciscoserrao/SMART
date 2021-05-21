@@ -1,0 +1,517 @@
+import weaver.Query;
+import lara.Io;
+import kadabra.Factory;
+
+
+aspectdef Socket
+	//schemaXSD();
+	extractDependencyGraph();
+	extractIntents();
+	addSocketObjectAndMainClass();
+	addCodeActivities();
+	addFragments();
+	
+end
+
+
+function addSocketObjectAndMainClass(){
+	var socketString= " static class BackgroundTask extends AsyncTask<String, Void, Void> {Socket s;PrintWriter writer;@Override protected Void doInBackground(String... voids){try{String message = voids[0];s = new Socket( " + %{"192.168.1.174"}% + ", 5500);writer = new PrintWriter(s.getOutputStream());writer.write(message);writer.flush();writer.close();}catch (IOException e){}return null;}}";
+	var instanciateString = "MainActivity.BackgroundTask b1 = new MainActivity.BackgroundTask();";
+	var executeString = "b1.execute(message)";
+	var messageString= "String message =";
+
+
+	for(var mainClass of Query.search("class")){
+		
+		// main activity constraint for validation
+		if(mainClass.name === "MainActivity"  ){
+			var importAsync = "import android.os.AsyncTask;import java.io.IOException;import java.io.PrintWriter;import java.net.Socket;";
+ 			mainClass.insertBefore(importAsync);
+ 			mainClass.insertCode(instanciateString);
+			mainClass.insertCode(socketString);
+			
+			var methodCreate = Query.searchFrom(mainClass, "method", "onCreate").get();
+			if(methodCreate.length === 1) {
+ 				methodCreate[0].body.insertBegin(messageString +%{"Activity [[mainClass.name]]: onCreate() called"}%+ ";"+ instanciateString + executeString);
+				
+			} else if(methodCreate.length === 0) {
+				 var createMethodCode = "@Override public void onCreate() {super.onCreate();" + messageString +%{"Activity [[mainClass.name]]: onCreate() called"}%+ ";"+ instanciateString + executeString +  ";}";
+				mainClass.insertCode(createMethodCode);
+			}
+			
+			var methodStart = Query.searchFrom(mainClass, "method", "onStart").get();
+			if(methodStart.length === 1) {
+ 				methodStart[0].body.insertBegin(messageString +%{"Activity [[mainClass.name]]: onStart() called"}%+ ";"+ instanciateString + executeString);
+			} else if(methodStart.length === 0) {
+				 var startMethodCode = "@Override public void onStart() {super.onStart();" + messageString +%{"Activity [[mainClass.name]]: onStart() called"}%+ ";"+ instanciateString + executeString +  ";}";
+				 mainClass.insertCode(startMethodCode);
+			}
+			
+			var methodStop = Query.searchFrom(mainClass, "method", "onStop").get();
+			if(methodStop.length === 1) {
+ 				methodStop[0].body.insertBegin(messageString +%{"Activity [[mainClass.name]]: onStop() called"}%+ ";"+ instanciateString + executeString);
+			} else if(methodStop.length === 0) {
+				 var stopMethodCode = "@Override public void onStop() {super.onStop();" + messageString +%{"Activity [[mainClass.name]]: onStop() called"}%+ ";"+ instanciateString + executeString +  ";}";
+				 mainClass.insertCode(stopMethodCode);
+			}
+
+			var methodPause = Query.searchFrom(mainClass, "method", "onPause").get();
+			if(methodPause.length === 1) {
+ 				methodPause[0].body.insertBegin(messageString +%{"Activity [[mainClass.name]]: onPause() called"}%+ ";"+ instanciateString + executeString);
+			} else if(methodPause.length === 0) {
+				 var pauseMethodCode = "@Override public void onPause() {super.onPause();" + messageString +%{"Activity [[mainClass.name]]: onPause() called"}%+ ";"+ instanciateString + executeString +  ";}";
+				 mainClass.insertCode(pauseMethodCode);
+			}
+
+				
+			var methodResume = Query.searchFrom(mainClass, "method", "onResume").get();
+			if(methodResume.length === 1) {
+ 				methodResume[0].body.insertBegin(messageString +%{"Activity [[mainClass.name]]: onResume() called"}%+ ";"+ instanciateString + executeString);
+			} else if(methodResume.length === 0) {
+				 var resumeMethodCode = "@Override public void onResume() {super.onResume();" + messageString +%{"Activity [[mainClass.name]]: onResume() called"}%+ ";"+ instanciateString + executeString +  ";}";
+				mainClass.insertCode(resumeMethodCode);
+			}
+			var methodRestart = Query.searchFrom(mainClass, "method", "onRestart").get();
+			if(methodRestart.length === 1) {
+ 				methodRestart[0].body.insertBegin(messageString +%{"Activity [[mainClass.name]]: onRestart() called"}%+ ";"+ instanciateString + executeString);
+			} else if(methodRestart.length === 0) {
+				 var restartMethodCode = "@Override public void onRestart() {super.onRestart();" + messageString +%{"Activity [[mainClass.name]]: onRestart() called"}%+ ";"+ instanciateString + executeString +  ";}";
+				mainClass.insertCode(restartMethodCode);
+			}
+
+			var methodDestroy = Query.searchFrom(mainClass, "method", "onDestroy").get();
+			if(methodDestroy.length === 1) {
+ 				methodDestroy[0].body.insertBegin(messageString +%{"Activity [[mainClass.name]]: onDestroy() called"}%+ ";"+ instanciateString + executeString);
+			} else if(methodDestroy.length === 0) {
+				 var destroyMethodCode = "@Override public void onDestroy() {super.onDestroy();" + messageString +%{"Activity [[mainClass.name]]: onDestroy() called"}%+ ";"+ instanciateString + executeString +  ";}";
+				mainClass.insertCode(destroyMethodCode);
+			}
+		}
+	}
+
+}
+
+function addCodeActivities(){
+	var executeString = "b1.execute(message)";
+	var messageString= "String message =";
+	var instanciateString = "MainActivity.BackgroundTask b1 = new MainActivity.BackgroundTask();";
+
+	for(var activityClasses of Query.search("class")){
+		// activities constraint for validation
+		if(activityClasses.name !== "MainActivity" && (activityClasses.superClass === "AppCompatActivity" || activityClasses.superClass ===  "AppDefaultActivity")){
+			activityClasses.insertCode(instanciateString);
+			
+			var methodCreate = Query.searchFrom(activityClasses, "method", "onCreate").get();
+			if(methodCreate.length === 1) {
+ 				methodCreate[0].body.insertBegin(messageString +%{"Activity [[activityClasses.name]]: onCreate() called"}%+ ";"+ instanciateString + executeString);
+			} else if(methodCreate.length === 0) {
+				 var createMethodCode = "@Override public void onCreate() {super.onCreate();" + messageString +%{"Activity [[activityClasses.name]]: onCreate() called"}%+ ";"+ instanciateString + executeString +  ";}";
+				activityClasses.insertCode(createMethodCode);
+			}
+
+				
+			var methodStart = Query.searchFrom(activityClasses, "method", "onStart").get();
+			if(methodStart.length === 1) {
+ 				methodStart[0].body.insertBegin(messageString +%{"Activity [[activityClasses.name]]: onStart() called"}%+ ";"+ instanciateString + executeString);
+			} else if(methodStart.length === 0) {
+				 var startMethodCode = "@Override public void onStart() {super.onStart();" + messageString +%{"Activity [[activityClasses.name]]: onStart() called"}%+ ";"+ instanciateString + executeString +  ";}";
+				activityClasses.insertCode(startMethodCode);
+			}
+
+			var methodStop = Query.searchFrom(activityClasses, "method", "onStop").get();
+			if(methodStop.length === 1) {
+ 				methodStop[0].body.insertBegin(messageString +%{"Activity [[activityClasses.name]]: onStop() called"}%+ ";"+ instanciateString + executeString);
+			} else if(methodStop.length === 0) {
+				 var stopMethodCode = "@Override public void onStop() {super.onStop();" + messageString +%{"Activity [[activityClasses.name]]: onStop() called"}%+ ";"+ instanciateString + executeString +  ";}";
+				activityClasses.insertCode(stopMethodCode);
+			}
+
+			var methodPause = Query.searchFrom(activityClasses, "method", "onPause").get();
+			if(methodPause.length === 1) {
+ 				methodPause[0].body.insertBegin(messageString +%{"Activity [[activityClasses.name]]: onPause() called"}%+ ";"+ instanciateString + executeString);
+			} else if(methodPause.length === 0) {
+				 var pauseMethodCode = "@Override public void onPause() {super.onPause();" + messageString +%{"Activity [[activityClasses.name]]: onPause() called"}%+ ";"+ instanciateString + executeString +  ";}";
+				activityClasses.insertCode(pauseMethodCode);
+			}
+
+				
+			var methodResume = Query.searchFrom(activityClasses, "method", "onResume").get();
+			if(methodResume.length === 1) {
+ 				methodResume[0].body.insertBegin(messageString +%{"Activity [[activityClasses.name]]: onResume() called"}%+ ";"+ instanciateString + executeString);
+			} else if(methodResume.length === 0) {
+				 var resumeMethodCode = "@Override public void onResume() {super.onResume();" + messageString +%{"Activity [[activityClasses.name]]: onResume() called"}%+ ";"+ instanciateString + executeString +  ";}";
+				activityClasses.insertCode(resumeMethodCode);
+			}
+
+			var methodDestroy = Query.searchFrom(activityClasses, "method", "onDestroy").get();
+			if(methodDestroy.length === 1) {
+ 				methodDestroy[0].body.insertBegin(messageString +%{"Activity [[activityClasses.name]]: onDestroy() called"}%+ ";"+ instanciateString + executeString);
+			} else if(methodDestroy.length === 0) {
+				 var destroyMethodCode = "@Override public void onDestroy() {super.onDestroy();" + messageString +%{"Activity [[activityClasses.name]]: onDestroy() called"}%+ ";"+ instanciateString + executeString +  ";}";
+				activityClasses.insertCode(destroyMethodCode);
+			}
+			var methodRestart = Query.searchFrom(activityClasses, "method", "onRestart").get();
+			if(methodRestart.length === 1) {
+ 				methodRestart[0].body.insertBegin(messageString +%{"Activity [[activityClasses.name]]: onRestart() called"}%+ ";"+ instanciateString + executeString);
+			} else if(methodRestart.length === 0) {
+				 var restartMethodCode = "@Override public void onRestart() {super.onRestart();" + messageString +%{"Activity [[activityClasses.name]]: onRestart() called"}%+ ";"+ instanciateString + executeString +  ";}";
+				activityClasses.insertCode(restartMethodCode);
+			}	
+		}
+	}
+}
+
+
+function addFragments(){
+	
+	var executeString = "b1.execute(message)";
+	var messageString= "String message =";
+	var instanciateString = "MainActivity.BackgroundTask b1 = new MainActivity.BackgroundTask();";
+	
+	for(var fragmentClasses of Query.search("class")){
+	// fragments constraint for validation
+		if(fragmentClasses.superClass === "Fragment" || fragmentClasses.superClass === "AppDefaultFragment"){
+			fragmentClasses.insertCode(instanciateString);
+			
+			var methodCreate = Query.searchFrom(fragmentClasses, "method", "onCreate").get();
+			if(methodCreate.length === 1) {
+ 				methodCreate[0].body.insertBegin(messageString +%{"Fragment [[fragmentClasses.name]]: onCreate() called"}%+ ";"+ instanciateString + executeString);
+			} else if(methodCreate.length === 0) {
+				 var createMethodCode = "@Override public void onCreate(Bundle savedInstance) {super.onCreate(savedInstance);" + messageString +%{"Fragment [[fragmentClasses.name]]: onCreate() called"}%+ ";"+ instanciateString + executeString +  ";}";
+				fragmentClasses.insertCode(createMethodCode);
+			}		
+			    
+			var methodViewCreated = Query.searchFrom(fragmentClasses, "method", "onViewCreated").get();
+			if(methodViewCreated.length === 1) {
+ 				methodViewCreated[0].body.insertBegin(messageString +%{"Fragment [[fragmentClasses.name]]: onViewCreated() called"}%+ ";"+ instanciateString + executeString);
+			} else if(methodViewCreated.length === 0) {
+				 var viewCreatedMethodCode = "@Override public void onViewCreated( View v, Bundle savedInstance) {super.onViewCreated(v, savedInstance);" + messageString +%{"Fragment [[fragmentClasses.name]]: onViewCreated() called"}%+ ";"+ instanciateString + executeString +  ";}";
+				fragmentClasses.insertCode(viewCreatedMethodCode);
+			}	
+
+			var methodcreateView = Query.searchFrom(fragmentClasses, "method", "onCreateView").get();
+			if(methodcreateView.length === 1) {
+ 				methodcreateView[0].body.insertBegin(messageString +%{"Fragment [[fragmentClasses.name]]: onCreateView() called"}%+ ";"+ instanciateString + executeString);
+			} else if(methodcreateView.length === 0) {
+				 var createViewMethodCode = "@Override public void onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {super.onCreateView(inflater, container, savedInstanceState);" + messageString +%{"Fragment [[fragmentClasses.name]]: onCreateView() called"}%+ ";"+ instanciateString + executeString +  ";}";
+				fragmentClasses.insertCode(viewCreatedMethodCode);
+			}	
+			
+			var methodStart = Query.searchFrom(fragmentClasses, "method", "onStart").get();
+			if(methodStart.length === 1) {
+ 				methodStart[0].body.insertBegin(messageString +%{"Fragment [[fragmentClasses.name]]: onStart() called"}%+ ";"+ instanciateString + executeString);
+			} else if(methodStart.length === 0) {
+				 var startMethodCode = "@Override public void onStart() {super.onStart();" + messageString +%{"Fragment [[fragmentClasses.name]]: onStart() called"}%+ ";"+ instanciateString + executeString +  ";}";
+				fragmentClasses.insertCode(startMethodCode);
+			}
+
+			var methodStop = Query.searchFrom(fragmentClasses, "method", "onStop").get();
+			if(methodStop.length === 1) {
+ 				methodStop[0].body.insertBegin(messageString +%{"Fragment [[fragmentClasses.name]]: onStop() called"}%+ ";"+ instanciateString + executeString);
+			} else if(methodStop.length === 0) {
+				 var stopMethodCode = "@Override public void onStop() {super.onStop();" + messageString +%{"Fragment [[fragmentClasses.name]]: onStop() called"}%+ ";"+ instanciateString + executeString +  ";}";
+				fragmentClasses.insertCode(stopMethodCode);
+			}
+
+			var methodPause = Query.searchFrom(fragmentClasses, "method", "onPause").get();
+			if(methodPause.length === 1) {
+ 				methodPause[0].body.insertBegin(messageString +%{"Fragment [[fragmentClasses.name]]: onPause() called"}%+ ";"+ instanciateString + executeString);
+			} else if(methodPause.length === 0) {
+				 var pauseMethodCode = "@Override public void onPause() {super.onPause();" + messageString +%{"Fragment [[fragmentClasses.name]]: onPause() called"}%+ ";"+ instanciateString + executeString +  ";}";
+				fragmentClasses.insertCode(pauseMethodCode);
+			}
+
+			var methodResume = Query.searchFrom(fragmentClasses, "method", "onResume").get();
+			if(methodResume.length === 1) {
+ 				methodResume[0].body.insertBegin(messageString +%{"Fragment [[fragmentClasses.name]]: onResume() called"}%+ ";"+ instanciateString + executeString);
+			} else if(methodResume.length === 0) {
+				 var resumeMethodCode = "@Override public void onResume() {super.onResume();" + messageString +%{"Fragment [[fragmentClasses.name]]: onResume() called"}%+ ";"+ instanciateString + executeString +  ";}";
+				fragmentClasses.insertCode(resumeMethodCode);
+			}
+
+			var methodDestroy = Query.searchFrom(fragmentClasses, "method", "onDestroy").get();
+			if(methodDestroy.length === 1) {
+ 				methodDestroy[0].body.insertBegin(messageString +%{"Fragment [[fragmentClasses.name]]: onDestroy() called"}%+ ";"+ instanciateString + executeString);
+			} else if(methodDestroy.length === 0) {
+				 var destroyMethodCode = "@Override public void onDestroy() {super.onDestroy();" + messageString +%{"Fragment [[fragmentClasses.name]]: onDestroy() called"}%+ ";"+ instanciateString + executeString +  ";}";
+				fragmentClasses.insertCode(destroyMethodCode);
+			}
+			
+			var methodDestroyView = Query.searchFrom(fragmentClasses, "method", "onDestroyView").get();
+			if(methodDestroy.length === 1) {
+ 				methodDestroy[0].body.insertBegin(messageString +%{"Fragment [[fragmentClasses.name]]: onDestroyView() called"}%+ ";"+ instanciateString + executeString);
+			} else if(methodDestroy.length === 0) {
+				 var destroyMethodCode = "@Override public void onDestroyView() {super.onDestroyView();" + messageString +%{"Fragment [[fragmentClasses.name]]: onDestroyView() called"}%+ ";"+ instanciateString + executeString +  ";}";
+				fragmentClasses.insertCode(destroyMethodCode);
+			}
+
+			var methodViewStateRestored = Query.searchFrom(fragmentClasses, "method", "onViewStateRestored").get();
+			if(methodViewStateRestored.length === 1) {
+ 				methodViewStateRestored[0].body.insertBegin(messageString +%{"Fragment [[fragmentClasses.name]]: onViewStateRestored() called"}%+ ";"+ instanciateString + executeString);
+			} else if(methodViewStateRestored.length === 0) {
+				 var viewStateRestoredMethodCode = "@Override public void  onViewStateRestored(Bundle savedInstance){super.onViewStateRestored(savedInstance);" + messageString +%{"Fragment [[fragmentClasses.name]]: onViewStateRestored() called"}%+ ";"+ instanciateString + executeString +  ";}";
+				fragmentClasses.insertCode(viewStateRestoredMethodCode);
+			}
+
+			var methodSaveInstanceState = Query.searchFrom(fragmentClasses, "method", "onSaveInstanceState").get();
+			if(methodSaveInstanceState.length === 1) {
+ 				methodSaveInstanceState[0].body.insertBegin(messageString +%{"Fragment [[fragmentClasses.name]]: onSaveInstanceState() called"}%+ ";"+ instanciateString + executeString);
+			} else if(methodSaveInstanceState.length === 0) {
+				 var saveInstanceStateMethodCode = "@Override public void onSaveInstanceState( Bundle outState) {super.onSaveInstanceState(outState);" + messageString +%{"Fragment [[fragmentClasses.name]]: onViewStateRestored() called"}%+ ";"+ instanciateString + executeString +  ";}";
+				fragmentClasses.insertCode(saveInstanceStateMethodCode);
+			}
+		}
+	}
+}
+
+
+function extractIntents(){
+
+	var ar = [];
+	
+	for(var $localVar of Query.search("localVariable")) {
+    		var typeName = $localVar.type;
+
+    		if(typeName === ("Intent") || typeName === "IntentFilter" ) {
+    			var saveIntent = %{Intent detected: Name - [[$localVar.name]] -> Type: [[$localVar.type]] -> Called at line [[$localVar.line]] }% + "\n" + %{Found on file : [[$localVar.ancestor("file")]] }% + "\n" + %{ Code: [[$localVar.Code]] }%;
+			ar.push("================================" + "\n"+
+			saveIntent + "\n" + "\n" + "\n");
+    		}	
+	}
+	if(!ar.length){
+		Io.writeFile("Static\ Analysis/Intents\ &\ Filters.txt", "INFORMATION: There are no Intents or Intent Filters defined on the application analysed");
+	}
+	else{
+		Io.writeFile("Static\ Analysis/Intents\ &\ Filters.txt", ar.toString());
+	}
+}
+
+
+function extractDependencyGraph(){
+
+	var classes = [];
+	var createInitialFile = "digraph App_Analysis {";
+	var direction = "rankdir=LR;";
+	var size = %{size="10"}%;
+	var shape = %{	node [shape = rectangle];}%;
+	var classHierarchy={};
+
+	Io.writeFile("Static\ Analysis/dependencyGraph.txt", createInitialFile + "\n");
+	Io.appendFile("Static\ Analysis/dependencyGraph.txt", direction + "\n" + size + "\n" + shape + "\n");
+	
+	for(var className of Query.search("class"))
+		classes.push(className.name);
+	
+	for(var cl of Query.search("class")){
+		for(var variables of Query.searchFrom(cl, "localVariable")){
+			var type = variables.type;
+			
+			if(classes.includes(type) && cl.name !== "1" && cl.name !== "2" && cl.name !== "3" && cl.name !== "4" && cl.name!== "5" && cl.name!=="6" && cl.name!=="7" && cl.name!=="8" &&  cl.name!=="9" && cl.name!=="10"){
+				
+				println("class : " + cl.name + " chama class " + type + " linha: " + variables.line + " file: " + variables.ancestor("file")) + " variavel ";
+				
+				var n = cl.name;
+				var s = classHierarchy[n];
+				var file = variables.ancestor("file");
+				var finalStrings = %{[[cl.name]] -> [[type]] [label = "line: [[variables.line]]"}% + "+"+ %{"  "}% + "+" + %{"file: [[file]]"}% +"]" + "\n";
+				
+				Io.appendFile("Static\ Analysis/dependencyGraph.txt", finalStrings);
+			/*	
+				// Initialize array if needed
+				if(s === undefined) {
+				s = [];
+				classHierarchy[n] = s;
+				}
+
+				s.push(variables.name + " variavel " + variables.type + " linha " + variables.line);
+		 	*/	
+			}
+		}
+	}
+	printlnObject(classHierarchy);
+	Io.appendFile("Static\ Analysis/dependencyGraph.txt","}" );	
+}
+
+
+
+
+/*
+function extractBroadcasts(){
+	var ar = [];
+	
+	for(var $localVar of Query.search("class")) {
+    		if($localVar.superClass === "android.content.BroadcastReceiver") {
+    			var saveBroad = %{Broadcast Receiver detected: Name - [[$localVar.name]] -> Defined on [[$localVar.name]].java file}% + "\n" + %{ Code: [[$localVar.Code]] }%;
+			ar.push("================================" + "\n"
+			+ saveBroad 
+			+ "\n" +  "\n" +  "\n" +  "\n"  );
+    		}	
+	}
+	if(!ar.length){
+		Io.writeFile("Static\ Analysis/Broadcasts.txt", "INFORMATION: There are no BroadcastReceivers defined on the application analysed");
+	}
+	else{
+		Io.writeFile("Static\ Analysis/Broadcasts.txt", ar.toString());
+	}
+}
+
+
+function extractIntentServices(){
+	var ar = [];
+	
+	for(var $localVar of Query.search("class")) {
+    		if($localVar.superClass === "android.app.IntentService") {
+    			var saveService = %{Intent Service detected: Name - [[$localVar.name]] -> Defined on [[$localVar.name]].java file}% + "\n" + %{ Code: [[$localVar.Code]] }%;
+			ar.push("================================" + "\n"
+			+ saveService 
+			+ "\n" +  "\n" +  "\n" +  "\n" );
+    		}	
+	}
+	if(!ar.length){
+		Io.writeFile("Static\ Analysis/Intent\ Services.txt", "INFORMATION: There are no Intent Services defined on the application analysed");
+	}
+	else{
+		Io.writeFile("Static\ Analysis/Intent\ Services.txt", ar.toString());
+	}
+}
+
+
+function extractServices(){
+	var ar = [];
+	
+	for(var $localVar of Query.search("class")) {
+    		if($localVar.superClass === "android.app.Service") {
+    			var saveService = %{Service detected: Name - [[$localVar.name]] -> Defined on [[$localVar.name]].java file}% + "\n" + %{ Code: [[$localVar.Code]] }%;
+			ar.push("================================" + "\n"
+			+ saveService 
+			+ "\n" +  "\n" +  "\n" +  "\n" );
+    		}	
+	}
+	if(!ar.length){
+		Io.writeFile("Static\ Analysis/Services.txt", "INFORMATION: There are no Services defined on the application analysed");
+	}
+	else{
+		Io.writeFile("Static\ Analysis/Services.txt", ar.toString());
+	}
+}
+
+function extractDatabase(){
+	Io.writeFile("Static\ Analysis/Database.txt", "Information About Database" + "\n");
+	for(var dbClass of Query.search("class")) {
+    		if(dbClass.superClass === "android.database.sqlite.SQLiteOpenHelper") {
+    			var saveDB = %{Database helper detected:  name - [[dbClass.name]] -> Defined on [[dbClass.name]].java file}% + "\n" +  "Code: " + "\n" + "\n" + %{ [[dbClass.Code]] }%;
+			Io.appendFile("Static\ Analysis/Database.txt", saveDB + "\n"+ "\n"+ "\n");
+    		}	
+	}
+	
+}
+
+
+function schemaXSD(){
+	var hierarchy = {};
+
+	//create class object structure
+	for($jp of Query.search("class")) {
+	   var superClass = $jp.superClass;
+	   var subClasses = hierarchy[superClass];
+	   
+	   // Initialize array if needed
+	   if(subClasses === undefined) {
+	       subClasses = [];
+	       hierarchy[superClass] = subClasses;
+	   }
+	   subClasses.push($jp);
+	}
+	printlnObject(hierarchy);
+
+	var $objClass = call GetOrNewClass("java.lang.Object");
+
+	//iterate each class
+	var code = singleClassXSD($objClass["$class"] ,hierarchy["java.lang.Object"], hierarchy, "");
+	var schemaLine = %{<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">}%;
+	
+	Io.writeFile("classDiagram.xsd", schemaLine + "\n");
+	Io.appendFile("classDiagram.xsd" ,code + "\n");
+	Io.appendFile("classDiagram.xsd", "</xs:schema>" + "\n");
+}
+
+
+
+
+
+
+
+function singleClassXSD(className, subClasses, hierarchy, indentation) {
+
+	//filter android libraries and build classes
+	if(className.qualifiedName.includes("android.") ||
+	className.qualifiedName.includes("androidx.") ||
+	className.qualifiedName.includes(".R$") || 
+	className.qualifiedName.includes(".R$") || 
+	className.name === "R" ||
+	className.name === "1" ||
+	className.name ==="2" || 
+	className.name === "3" ||
+	className.name === "4" ||
+	className.name === "5" ||
+	className.name === "6" ||
+	className.name === "7" ||
+	className.name === "8" ||
+	className.name === "10" ||
+	className.name === "9" 
+	)
+	{
+		return undefined;
+	}
+
+	//no more subclasses
+	if(subClasses === undefined){
+
+		//add class to the schema
+		var code  = indentation + %{<xs:element name="[[className.name]]" >}% + "\n";
+		code+= indentation + %{<xs:complexType>}% +  "\n" ;
+		code+= indentation + %{<xs:sequence>}% +  "\n" ;
+		
+		//add its variables to the schema
+		for(var variables of Query.searchFrom(className, "localVariable")){
+		
+			//verificar tipo de variavel?
+			code += indentation + indentation + %{<xs:element name="[[variables.name]]" type="xs:[[variables.type]]"/>}% + "\n" ; 
+		}
+
+		//close tags
+		code+= indentation + %{</xs:sequence>}% +  "\n" ;		
+		code+=indentation + %{</xs:complexType>}% +  "\n" ;
+		code += indentation + %{</xs:element>}%  +  "\n" ;
+
+		return code;
+	}
+
+	
+	var code =indentation + %{<xs:element name="[[className.name]]" >}% + "\n" ; 
+	code+=indentation + %{<xs:complexType>}% +  "\n" ;
+	code+= indentation + %{<xs:sequence>}% +  "\n" ;
+
+	for(var variables of Query.searchFrom(className, "localVariable")){
+	//verificar tipo de variavel?
+		code += indentation + indentation + %{<xs:element name="[[variables.name]]" type="xs:[[variables.type]]"/>}% + "\n" ; 
+	}
+	
+	//call function to iterate its subclasses
+	for(var subClass of subClasses){
+		var subClassCode = singleClassXSD(subClass, hierarchy[subClass.qualifiedName],hierarchy ,indentation + "	");
+		if(subClassCode !== undefined){
+			code+= subClassCode;
+		}
+	}	
+
+	//close structure tags
+	code+= indentation + %{</xs:sequence>}% +  "\n" ;		
+	code+=indentation + %{</xs:complexType>}% +  "\n" ;
+	code += indentation + %{</xs:element>}% ; 
+
+	return code;
+}
+
+*/
+
