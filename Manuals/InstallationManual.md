@@ -13,7 +13,7 @@ In the first stage, the following software must be installed:
   - [Apache Netbeans (used 12.3)](https://netbeans.apache.org/download/index.html)
 
 
-For the steps of the installation process itself, follow the enumeration:
+The following enumation comes to show each of the steps of the installation process:
 
  1. Download this repository to your local folder.
  
