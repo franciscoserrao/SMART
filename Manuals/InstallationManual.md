@@ -1,11 +1,5 @@
 # Installation Manual
 
- 2. As a first instance, build the application that will be analysed with the methodology in order to generate the r folder of the project. 
- 
- 
-`Note: r folder can be found in app/build/generated/.../r/ `
-
-
 This installation guide constains instructions related to the installation REMAHT divided into two different parts: **Kadabra Tool** (Static Analysis component) and the **REMAHT Tool** (Dynamic Analysis component). Before installing any of the two, one must ensure that some prerequisites are followed. 
 
 In the first stage, the following software must be installed:
