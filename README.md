@@ -12,5 +12,20 @@ The instalation and usage guides are provided bellow for better understanding.
 
 
 
+goal
+
+overview
+
+static
+
+dynamic
 
 
+
+future
+
+contibutors
+
+contact
+
+license?
