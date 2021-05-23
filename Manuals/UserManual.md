@@ -1,6 +1,6 @@
 # Utilization Manual
 
-This documents comes to show an example on how to complete the entire proposed methodology (REMAHT) to an aplication under analysis.
+This documents comes to show an example on how to apply the entire proposed methodology (REMAHT) to an aplication under analysis.
 
 In order to complete the process, there is the need to already have installed some prerequisites. Please refer to the [Installation Manual](/Manuals/InstallationManual.md) to access the links for downloading the needed software.
 
@@ -30,19 +30,23 @@ Also, a <code> `dependencyGraph.txt` </code> file contains the code needed to ge
 
 At this stage, the static analysis is complete. The artifacts are the <code> `Intent&IntentFilters.txt` </code> and <code> `dependencyGraph.txt` </code> files, as well as the transformed code by kadabra.
 
+  ## Dynamic Analysis
+ 
 7. Open the application's folder and replace the file which was used for the analysis.
 
 8. Open the `manifest.xml` file of the application and add the following permissions (if not already existing) in order to enable the socket necessary for the dynamic analysis:
-
 
 <code> ```<uses-permission android:name="android.permission.INTERNET"/>``` </code>
  
 <code> ```<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>``` </code>
  
-This documents comes to show an example on how to complete the entire proposed methodology (REMAHT) to an aplication under analysis.
+ 9. Open [NetBeans]() and run the <code> `MainFrameServer.jframe` </code>
+ 
+ <code> `Note: verify IP address in the JFrame components to match local IP and the one in the transformed code`</code> 
+ 
+ 
 
  
- ## Dynamic Analysis
  
  
  
