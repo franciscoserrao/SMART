@@ -67,5 +67,7 @@ The following enumation comes to show each of the steps of the installation proc
 
 ## Example Configuration
 
+   The following images illustrate the full Kadabra's configuration. 
+   
   <img src="/Images/kadabra.png" alt="Configuration"/>
     <img src="/Images/kadabra1.png" alt="Configuration2"/>  <img src="/Images/kadabra2.png" alt="Configuration3"/>
