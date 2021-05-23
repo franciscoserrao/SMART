@@ -12,29 +12,55 @@ In the first stage, the following software must be installed:
   
   - [Apache Netbeans (used 12.3)](https://netbeans.apache.org/download/index.html)
 
-  - [Kadabra Java Weaver](http://specs.fe.up.pt/tools/kadabra/)
 
-
-For the steps of the installation process itself, follow the enumeration:
+The following enumation comes to show each of the steps of the installation process:
 
  1. Download this repository to your local folder.
  
- 2. As a first instance, build the application that will be analysed with the methodology in order to generate the r folder of the project. 
  
+ 2. Download [Kadabra Java Weaver](http://specs.fe.up.pt/tools/kadabra/) and saved to a <directory>.
  
-**Note:** r folder can be found in app/build/generated/.../r/ 
-
-
- 3. Open Kadabra Java Weaver.
+  
+ 3. Go to `<User>/.../<directory>/kadabra/`
  
- 4. On the **middle** tab (inserir), select the SocketV2.Lara file as the configuration script.
+  
+ 4. Create a file with the extension `<name>.config`
+  
+  
+ 5. Open Kadabra Java Weaver
+   
+  
+ 6. On the **middle** tab (Options), select the `SocketV2.Lara` file as the "Aspect" script.
+  
+  
+ 7. Add the directory `app/src/main/java/<directory>` and the `r` folder to the **Source** atribute.
+  
+ `Note: <directory> corresponds to the folder where the code that will be analysed is`
+  
+  
+ 8. Select the output folder where transformed code should be placed
+  
+ `Note: It is not recommended to use the path to the same <directory> as source folder`
+  
+  
+ **(OPTIONAL)** 9. Create debug file in kadabra folder (no entension).
+  
+ **(OPTIONAL)** 9.1. Select Debug mode and Lara Trace
+  
+  
+  10. Add classpaths for build libraries `<User>/.gradle/caches/`. 
+  
+   `Note: For performance improvement one can go to <Application Analysed/.idea/libraries/> and added to caches/ one should select each of the libraries that the application uses`
+
+  
+  11. Select options: **Fully qualified name**, **Copy resources to output folder**, **Format Code and organize imports** and **Fully Qualified Names**
+  
+`Note: the final configuration should match the following image`
 
 
-**<span style="color: red"> Note</span>
-:** the final configuration should match the following image
+  12. Click **Save as...** and select the `<name>.config` file created in step 4.
 
-<img src="/../Images/test1.png" alt="My cool logo"/>
+## Example Configuration
 
-
-
- 5. 
+  <img src="/Images/kadabra.png" alt="Configuration"/>
+    <img src="/Images/kadabra1.png" alt="Configuration2"/>  <img src="/Images/kadabra2.png" alt="Configuration3"/>
