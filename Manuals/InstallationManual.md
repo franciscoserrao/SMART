@@ -30,17 +30,17 @@ The following enumation comes to show each of the steps of the installation proc
  5. Open Kadabra Java Weaver
    
   
- 6. On the **middle** tab (Options), select the `SocketV2.Lara` file as the "Aspect" script.
+ 6. On the **middle** tab (Options), select the <code> `SocketV2.Lara` </code> file as the "Aspect" script.
   
   
- 7. Add the directory `app/src/main/java/<directory>` and the `r` folder to the **Source** atribute.
+ 7. Add the directory <code> `app/src/main/java/<directory>` </code> and the <code> `r`</code> folder to the **Source** atribute.
   
- `Note: <directory> corresponds to the folder where the code that will be analysed is`
+<code> `Note: <directory> corresponds to the folder where the code that will be analysed is`</code>
   
   
  8. Select the output folder where transformed code should be placed
   
- `Note: It is not recommended to use the path to the same <directory> as source folder`
+ <code> `Note: It is not recommended to use the path to the same <directory> as source folder` </code>
   
   
  **(OPTIONAL)** 9. Create debug file in kadabra folder (no entension).
@@ -48,17 +48,17 @@ The following enumation comes to show each of the steps of the installation proc
  **(OPTIONAL)** 9.1. Select Debug mode and Lara Trace
   
   
-  10. Add classpaths for build libraries `<User>/.gradle/caches/`. 
+  10. Add classpaths for build libraries <code> `<User>/.gradle/caches/` </code>. 
   
-   `Note: For performance improvement one can go to <Application Analysed/.idea/libraries/> and added to caches/ one should select each of the libraries that the application uses`
+<code>   `Note: For performance improvement one can go to <Application Analysed/.idea/libraries/> and added to caches/ one should select each of the libraries that the application uses` </code>
 
   
-  11. Select options: **Fully qualified name**, **Copy resources to output folder**, **Format Code and organize imports** and **Fully Qualified Names**
+  11. Select options: <code> `Fully qualified name` </code>, <code> `Copy resources to output folder`</code>, <code> `Format Code and organize imports` </code> and <code> `Fully Qualified Names` </code>
   
-`Note: the final configuration should match the following image`
+<code> `Note: the final configuration should match the following image` </code>
 
 
-  12. Click **Save as...** and select the `<name>.config` file created in step 4.
+  12. Click **Save as...** and select the <code> `<name>.config` </code> file created in step 4.
 
 ## Example Configuration
 
