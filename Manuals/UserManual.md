@@ -19,7 +19,7 @@ In order to complete the process, there is the need to already have installed so
 4. Save as the <code> `<name>.config` </code> file and on the program tab click start option. Image below for example.
  
  <img src="/Images/start.png" alt="example1"/>
-
+ 
 5. After this, you can open the kadabra folder. In it, a folder named <code> `Static Analysis`</code> can be found with a file containing information regarding all intents and intent filters of the app (<code> `Intent&IntentFilters.txt` </code>). 
 
  <img src="/Images/files.png" alt="example2"/>
@@ -35,12 +35,14 @@ At this stage, the static analysis is complete. The artifacts are the <code> `In
 8. Open the `manifest.xml` file of the application and add the following permissions (if not already existing) in order to enable the socket necessary for the dynamic analysis:
 
 
-`<uses-permission android:name="android.permission.INTERNET"/>
+```<uses-permission android:name="android.permission.INTERNET"/>```
  
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/> 
+```<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>```
  
 This documents comes to show an example on how to complete the entire proposed methodology (REMAHT) to an aplication under analysis.
-# Utilization Manual
+
+ 
+ # Utilization Manual
  
  
  
