@@ -18,13 +18,13 @@ The following enumation comes to show each of the steps of the installation proc
  1. Download this repository to your local folder.
  
  
- 2. Download [Kadabra Java Weaver](http://specs.fe.up.pt/tools/kadabra/) and saved to a <directory>.
+ 2. Download [Kadabra Java Weaver](http://specs.fe.up.pt/tools/kadabra/) and saved to a  <code> `<directory>` </code>.
  
   
- 3. Go to `<User>/.../<directory>/kadabra/`
+ 3. Go to <code> `<User>/.../<directory>/kadabra/` </code>
  
   
- 4. Create a file with the extension `<name>.config`
+ 4. Create a file with the extension <code> `<name>.config` </code>
   
   
  5. Open Kadabra Java Weaver
