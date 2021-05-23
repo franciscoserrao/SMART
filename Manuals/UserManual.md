@@ -53,6 +53,6 @@ At this stage, the static analysis is complete. The artifacts are the <code> `In
 
  
  
- 
+The methodology process is over at this point
  
  
