@@ -60,6 +60,11 @@ The following enumation comes to show each of the steps of the installation proc
 
   12. Click **Save as...** and select the <code> `<name>.config` </code> file created in step 4.
 
+   13. Open terminal and run command <code> `ifconfig |grep inet` </code> to get local ip and place it in the <code> ` SocketV2.Lara ` </code> file. Example bellow.
+   
+   <img src="/Images/ip1.png" alt="ip1"/>
+  <img src="/Images/ip2.png" alt="ip2"/>
+
 ## Example Configuration
 
   <img src="/Images/kadabra.png" alt="Configuration"/>
