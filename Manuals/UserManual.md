@@ -34,17 +34,22 @@ At this stage, the static analysis is complete. The artifacts are the <code> `In
  
 7. Open the application's folder and replace the file which was used for the analysis.
 
-8. Open the `manifest.xml` file of the application and add the following permissions (if not already existing) in order to enable the socket necessary for the dynamic analysis:
+ 8. Delete R class of the transformed folder.
+
+9. Open the `manifest.xml` file of the application and add the following permissions (if not already existing) in order to enable the socket necessary for the dynamic analysis:
 
 <code> ```<uses-permission android:name="android.permission.INTERNET"/>``` </code>
  
 <code> ```<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>``` </code>
  
- 9. Open [NetBeans]() and run the <code> `MainFrameServer.jframe` </code>
+ 10. Open [NetBeans]() and run the <code> `MainFrameServer.jframe` </code>
  
- <code> `Note: verify IP address in the JFrame components to match local IP and the one in the transformed code`</code> 
+ <code> `Note: verify the port in the JFrame components to match the port on the one in the transformed code`</code> 
+ 
+  <img src="/Images/port.png" alt="port"/>
  
  
+ 11. Run and start exploring application and see results in the java desktop application.
 
  
  
