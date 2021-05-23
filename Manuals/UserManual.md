@@ -35,14 +35,14 @@ At this stage, the static analysis is complete. The artifacts are the <code> `In
 8. Open the `manifest.xml` file of the application and add the following permissions (if not already existing) in order to enable the socket necessary for the dynamic analysis:
 
 
-```<uses-permission android:name="android.permission.INTERNET"/>```
+<code> ```<uses-permission android:name="android.permission.INTERNET"/>``` </code>
  
-```<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>```
+<code> ```<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>``` </code>
  
 This documents comes to show an example on how to complete the entire proposed methodology (REMAHT) to an aplication under analysis.
 
  
- # Utilization Manual
+ ## Dynamic Analysis
  
  
  
