@@ -53,6 +53,5 @@ At this stage, the static analysis is complete. The artifacts are the <code> `In
 
  
  
-The methodology process is over at this point
- 
+The methodology process is over at this point and the graphs in the REMAHT app heps to understand and acquire information regarding activities and fragments in the application under analysis, such as their name and lifecycle state throughout the exploration 
  
