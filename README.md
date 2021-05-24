@@ -9,7 +9,7 @@ The instalation and usage guides are provided bellow for better understanding.
 
 
 
-## Motavtion and Goal
+## Motivation and Goal
 
 The motivation behind the development of this tool was a common problem among software engineers. Nowadays, with the constant evolution of software, it may be hard not only to maintain artifacts, but also to keep track of every change on an application. Moreover, mobile applications and in particular Android, has an exponential learning curve that takes developers need to spend more time to fully understand components of Android. 
 
