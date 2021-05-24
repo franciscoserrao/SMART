@@ -47,6 +47,7 @@ At this stage, the static analysis is complete. The artifacts are the <code> `In
  <code> `Note: verify the port in the JFrame components to match the port on the one in the transformed code`</code> 
  
   <img src="/Images/port.png" alt="port"/>
+  <img src="/Images/port.png2" alt="port2"/>
  
  
  11. Run and start exploring application and see results in the java desktop application.
