@@ -1,6 +1,6 @@
 # Installation Manual
 
-This installation guide constains instructions related to the installation REMAHT divided into two different parts: **Kadabra Tool** (Static Analysis component) and the **REMAHT Tool** (Dynamic Analysis component). Before installing any of the two, one must ensure that some prerequisites are followed. 
+This installation guide constains instructions related to the installation SEMANTIC divided into two different parts: **Kadabra Tool** (Static Analysis component) and the **SEMANTIC Tool** (Dynamic Analysis component). Before installing any of the two, one must ensure that some prerequisites are followed. 
 
 In the first stage, the following software must be installed:
 
