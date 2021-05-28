@@ -1,6 +1,6 @@
 # Utilization Manual
 
-This documents comes to show an example on how to apply the entire proposed methodology (REMAHT) to an aplication under analysis.
+This documents comes to show an example on how to apply the entire proposed methodology (SEMANTIC) to an aplication under analysis.
 
 In order to complete the process, there is the need to already have installed some prerequisites. Please refer to the [Installation Manual](/Manuals/InstallationManual.md) to access the links for downloading the needed software.
 
@@ -53,5 +53,5 @@ At this stage, the static analysis is complete. The artifacts are the <code> `In
 
  
  
-The methodology process is over at this point and the graphs in the REMAHT app heps to understand and acquire information regarding activities and fragments in the application under analysis, such as their name and lifecycle state throughout the exploration.
+The methodology process is over at this point and the graphs in the SEMANTIC app heps to understand and acquire information regarding activities and fragments in the application under analysis, such as their name and lifecycle state throughout the exploration.
  
