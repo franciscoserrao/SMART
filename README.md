@@ -1,7 +1,7 @@
 # SEMANTIC
 This repository contains the code which implements a methodology for reverse engineering android mobile applications. The methodology was developed in the context of a final dissertation of the Master in Software Engineering course at Universidade do Porto - FEUP.
 
-The instalation and utilization guides are provided bellow for easier usage of the tool.
+The installation and utilization guides are provided bellow for easier usage of the tool.
 
 [Installation Manual](Manuals/InstallationManual.md)
 
