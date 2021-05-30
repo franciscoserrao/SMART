@@ -49,7 +49,7 @@ At this stage, the static analysis is complete. The artifacts are the <code> `In
   <img src="/Images/port.png" alt="port"/> <img src="/Images/port2.png" alt="port2"/>
  
  
- 11. Run and start exploring application and see results in the java desktop application.
+ 11. Choose the analysis you want to perform and start exploring application to see results in the java desktop application.
 
  
  
