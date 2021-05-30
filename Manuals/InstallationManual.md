@@ -1,8 +1,8 @@
 # Installation Manual
 
-This installation guide constains instructions related to the installation SEMANTIC divided into two different parts: **Kadabra Tool** (Static Analysis component) and the **SEMANTIC Tool** (Dynamic Analysis component). Before installing any of the two, one must ensure that some prerequisites are followed. 
+The installation guide describes the instructions related to the installation of SEMANTIC divided into two different parts: **Kadabra Weaver Tool** (Static Analysis component) and the **SEMANTIC Desktop App** (Dynamic Analysis component). Before installing any of the two, one must ensure that some prerequisites are followed. 
 
-In the first stage, the following software must be installed:
+In the first stage, the following softwares must be installed:
 
   - [Java SDK](https://www.oracle.com/pt/java/technologies/javase/javase-jdk8-downloads.html) 
   
@@ -24,13 +24,13 @@ The following enumation comes to show each of the steps of the installation proc
  3. Go to <code> `<User>/.../<directory>/kadabra/` </code>
  
   
- 4. Create a file with the extension <code> `<name>.config` </code>
+ 4. Create a file with the extension <code> `<filename>.config` </code>
   
   
  5. Open Kadabra Java Weaver
    
   
- 6. On the **middle** tab (Options), select the <code> `SocketV2.Lara` </code> file as the "Aspect" script.
+ 6. On the **Options** tab (middle tab), select the <code> `SocketV2.Lara` </code> file as the "Aspect" script.
   
   
  7. Add the directory <code> `app/src/main/java/<directory>` </code> and the <code> `r`</code> folder to the **Source** atribute.
