@@ -8,7 +8,7 @@ In order to complete the process, there is the need to already have installed so
 
 2. Find the r folder.
 
-<code> ` Note: usually placed in "app/build/generated.../r" `</code>
+<code> ` Note: usually placed in "app/build/generated/.../r" `</code>
 
 3. Open Kadabra and use the configurations described in the **Installation manual**. 
 
@@ -20,11 +20,11 @@ In order to complete the process, there is the need to already have installed so
  
  <img src="/Images/start.png" alt="example1"/>
  
-5. After this, you can open the kadabra folder. In it, a folder named <code> `Static Analysis`</code> can be found with a file containing information regarding all intents and intent filters of the app (<code> `Intent&IntentFilters.txt` </code>). 
+5. After this, you can open the kKdabra folder. In it, a folder named <code> `Static Analysis`</code> can be found with a file containing information regarding all intents and intent filters of the app (<code> `Intent&IntentFilters.txt` </code>). 
 
  <img src="/Images/files.png" alt="example2"/>
  
-Also, a <code> `dependencyGraph.txt` </code> file contains the code needed to generate a Class Dependency Graph of the application using the tool [WebGraphviz](http://www.webgraphviz.com).
+Also, a <code> `dependencyGraph.txt` </code> file contains the script needed to generate a visual Class Dependency Graph of the application using the tool [WebGraphviz](http://www.webgraphviz.com).
 
 6. In order to generate the graph, go to the WebGraphviz website and place the script contained in the `dependencyGraph.txt` file.
 
@@ -53,5 +53,5 @@ At this stage, the static analysis is complete. The artifacts are the <code> `In
 
  
  
-The methodology process is over at this point and the graphs in the SEMANTIC app heps to understand and acquire information regarding activities and fragments in the application under analysis, such as their name and lifecycle state throughout the exploration.
+The methodology process is over at this point and the graphs in the SEMANTIC app help to understand and acquire information regarding activities and fragments in the application under analysis, such as their name and lifecycle state throughout the exploration.
  
