@@ -23,13 +23,11 @@ SEMANTIC is a mixed technique methodology. With this in mind, it is composed of 
 The dynamic analysis is performed using a desktop application connected to the mobile app through the previously mentioned socket. In this part of the analysis, the user can explore the mobile application and check the diagrams related to activities and fragments on the desktop app in order to check in real time which activity/fragment is being called and at which state it is.
 
 
-## Future
-?
+## Future Work
 
-## Contibutors
-?
 
 ## Contact
-?
+
+
 
 ## License?
