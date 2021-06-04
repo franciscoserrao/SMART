@@ -28,10 +28,13 @@ The dynamic analysis is performed using a desktop application connected to the m
 
 ## Contact
 
-Ana Paiva -> apaiva@fe.up.pt
-Francisco Serrão -> franciscoserrao@me.com
-Nuno Flores -> nuno.flores@gmail.com
-João Bispo -> joaobispo@gmail.com 
+Ana Paiva - apaiva@fe.up.pt
+
+Francisco Serrão - franciscoserrao@me.com
+
+Nuno Flores - nuno.flores@gmail.com
+
+João Bispo - joaobispo@gmail.com 
 
 ## License
 
