@@ -34,7 +34,7 @@ Supervisor: Nuno Flores - nuno.flores@gmail.com
 
 Co-Supervisor: Ana Paiva - apaiva@fe.up.pt
 
-Colaborator: João Bispo - joaobispo@gmail.com 
+Research Colaborator: João Bispo - joaobispo@gmail.com 
 
 ## License
 
