@@ -28,13 +28,13 @@ The dynamic analysis is performed using a desktop application connected to the m
 
 ## Contributions
 
-Ana Paiva - apaiva@fe.up.pt
+Master Student: Francisco Serrão - franciscoserrao@me.com
 
-Francisco Serrão - franciscoserrao@me.com
+Supervisor: Nuno Flores - nuno.flores@gmail.com
 
-Nuno Flores - nuno.flores@gmail.com
+Co-Supervisor: Ana Paiva - apaiva@fe.up.pt
 
-João Bispo - joaobispo@gmail.com 
+Kadabra Maintenance: João Bispo - joaobispo@gmail.com 
 
 ## License
 
