@@ -1,4 +1,8 @@
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
 /**
  *
  * @author franciscoserrao
@@ -18,7 +22,6 @@ public class MainFrameServer extends javax.swing.JFrame {
         fragmentsBtn = new javax.swing.JButton();
         mainLabelTitle = new javax.swing.JLabel();
         usBtn = new javax.swing.JButton();
-        intentBtn = new javax.swing.JButton();
         combinedBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -39,7 +42,7 @@ public class MainFrameServer extends javax.swing.JFrame {
         });
 
         mainLabelTitle.setFont(new java.awt.Font("Apple Color Emoji", 0, 17)); // NOI18N
-        mainLabelTitle.setText("Welcome to REMAPP Tool !");
+        mainLabelTitle.setText("Welcome to SEMANTIC Desktop Tool !");
 
         usBtn.setText("About Us");
         usBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -48,14 +51,7 @@ public class MainFrameServer extends javax.swing.JFrame {
             }
         });
 
-        intentBtn.setText("Intents' Analysis");
-        intentBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                intentBtnActionPerformed(evt);
-            }
-        });
-
-        combinedBtn.setText("Fragments and Activity Analysis");
+        combinedBtn.setText("Combined Analysis");
         combinedBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 combinedBtnActionPerformed(evt);
@@ -74,21 +70,16 @@ public class MainFrameServer extends javax.swing.JFrame {
                         .addGap(25, 25, 25)
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(mainLabelTitle)))
-                .addGap(100, 100, 100))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(25, 25, 25)
+                        .addComponent(mainLabelTitle))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(usBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(intentBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(activityBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(fragmentsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addComponent(combinedBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(130, 130, 130)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(activityBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(fragmentsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(combinedBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(usBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,33 +95,50 @@ public class MainFrameServer extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(combinedBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(intentBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(usBtn)
-                .addGap(20, 20, 20))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void activityBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activityBtnActionPerformed
-        new ActivityJFrame().setVisible(true);
+        ActivityJFrame n = new ActivityJFrame();
+        n.setVisible(true);
+        
+        try {
+            n.startThread();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        
     }//GEN-LAST:event_activityBtnActionPerformed
 
     private void fragmentsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fragmentsBtnActionPerformed
-        new FragmentsJFrame().setVisible(true);
+        FragmentsJFrame fragments = new FragmentsJFrame();
+        fragments.setVisible(true);
+        
+        try {
+            fragments.startThread();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_fragmentsBtnActionPerformed
 
     private void usBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usBtnActionPerformed
-        
+       
     }//GEN-LAST:event_usBtnActionPerformed
 
-    private void intentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_intentBtnActionPerformed
-        
-    }//GEN-LAST:event_intentBtnActionPerformed
-
     private void combinedBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combinedBtnActionPerformed
-        new CombinedAnalysisJFrame().setVisible(true);
+        CombinedAnalysisJFrame combined = new CombinedAnalysisJFrame();
+        combined.setVisible(true);
+        
+        try {
+            combined.startThread();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_combinedBtnActionPerformed
 
     
@@ -146,7 +154,6 @@ public class MainFrameServer extends javax.swing.JFrame {
     private javax.swing.JButton activityBtn;
     private javax.swing.JButton combinedBtn;
     private javax.swing.JButton fragmentsBtn;
-    private javax.swing.JButton intentBtn;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel mainLabelTitle;
     private javax.swing.JButton usBtn;

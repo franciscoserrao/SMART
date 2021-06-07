@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /*
@@ -23,7 +25,7 @@ public class ActivityJFrame extends javax.swing.JFrame {
     static BufferedReader br;
     static String message;
     static Boolean socketBool;
-    private Integer serverPort;
+    private Integer serverPort = 5500;
     private Boolean startS;
     
     
@@ -85,49 +87,59 @@ public class ActivityJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 
-    public static void main(String args[]) {
+    public static void main(String args[]) throws InterruptedException {
   
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ActivityJFrame().setVisible(true);
+               
 
             }
         });
-        new ActivityJFrame().socketCreation();
+        new ActivityJFrame().startThread();
 
     }
 
-   
-    public void socketCreation(){
-        System.out.println("------------------------------");
-        System.out.println("        Creating socket       ");
-        serverPort = 5500;
-        
+
+
+    public void startThread() throws InterruptedException{
         try{
-            serverSocket = new ServerSocket(5500);
+            serverSocket = new ServerSocket(serverPort);
             System.out.println("Server Port: " + serverPort);
             System.out.println("Socket successfully established");
-            while(true){
-                   
-                socket = serverSocket.accept();
-                isr = new InputStreamReader(socket.getInputStream());
-                br = new BufferedReader(isr); 
-                message = br.readLine(); 
-                System.out.println(message);
-                if(message.contains("Activity")){
-                    actTextArea.setText(actTextArea.getText() + "\n" + "Info: " + message);
-                    scrollDown();
-                    activityImages();
-                }
+              Thread t = new Thread(() -> {
+                int count = 0;
 
-            }
-         
+                while(true){
+                    try {
+                        socket = serverSocket.accept();
+                        isr = new InputStreamReader(socket.getInputStream());
+                        br = new BufferedReader(isr);
+                        message = br.readLine();
+                        System.out.println(message);
+                        if(message.contains("Activity")){
+                            actTextArea.setText(actTextArea.getText() + "\n" + "Info: " + message);
+                            scrollDown();
+                            activityImages();
+                        }
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            });
+        t.setDaemon(true);
+        t.start();
+        Thread.currentThread().sleep(1000);
+
         }   
-        catch(IOException e){
-            e.printStackTrace();
+        catch (IOException ex) {
+            ex.printStackTrace();
+
         }
-    }  
-     
+    }
+    
+        
+    
     public void scrollDown(){
         actTextArea.setCaretPosition(actTextArea.getText().length());
     }

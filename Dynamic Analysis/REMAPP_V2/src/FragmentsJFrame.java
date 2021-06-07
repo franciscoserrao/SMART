@@ -16,7 +16,7 @@ public class FragmentsJFrame extends javax.swing.JFrame {
     static BufferedReader br;
     static String message;
     static Boolean socketBool;
-    private Integer serverPort;
+    private Integer serverPort = 5500;
  
     
     public FragmentsJFrame() {
@@ -79,42 +79,48 @@ public class FragmentsJFrame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws InterruptedException {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FragmentsJFrame().setVisible(true);
             }
         });
-        new FragmentsJFrame().socketCreation();
+        new FragmentsJFrame().startThread();
     }
     
-    
-    public void socketCreation(){
-        System.out.println("------------------------------");
-        System.out.println("        Creating socket       ");
-        serverPort = 5500;
-        
+    public void startThread() throws InterruptedException{
         try{
-            serverSocket = new ServerSocket(5500);
+            serverSocket = new ServerSocket(serverPort);
             System.out.println("Server Port: " + serverPort);
             System.out.println("Socket successfully established");
-            while(true){
-                socket = serverSocket.accept();
-                isr = new InputStreamReader(socket.getInputStream());
-                br = new BufferedReader(isr); 
-                message = br.readLine(); 
-                System.out.println(message);
-                if(message.contains("Fragment")){
-                    fragsTextArea.setText(fragsTextArea.getText() + "\n" + "Info: " + message);
-                    scrollDown();
-                    fragmentImages();
+            Thread t = new Thread(() -> {
+                while(true){
+                    try {        
+                        socket = serverSocket.accept();
+                        isr = new InputStreamReader(socket.getInputStream());
+                        br = new BufferedReader(isr); 
+                        message = br.readLine(); 
+                        System.out.println(message);
+                        if(message.contains("Fragment")){
+                            fragsTextArea.setText(fragsTextArea.getText() + "\n" + "Info: " + message);
+                            scrollDown();
+                            fragmentImages();
+                        }
+                    } 
+                    catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
                 }
-            }
+            });
+        t.setDaemon(true);
+        t.start();
+        Thread.currentThread().sleep(1000);
+        }   
+        catch (IOException ex) {
+            ex.printStackTrace();
+
         }
-        catch(IOException e){
-            e.printStackTrace();
-        }
-    }  
+    }
     
     public void scrollDown(){
         fragsTextArea.setCaretPosition(fragsTextArea.getText().length());
