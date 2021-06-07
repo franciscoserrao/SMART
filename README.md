@@ -34,11 +34,11 @@ Supervisor: Nuno Flores - nuno.flores@gmail.com
 
 Co-Supervisor: Ana Paiva - apaiva@fe.up.pt
 
-Kadabra Maintenance: João Bispo - joaobispo@gmail.com 
+Colaborator: João Bispo - joaobispo@gmail.com 
 
 ## License
 
-Copyright 2021 [name of copyright owner]
+Copyright 2021 University of Porto - FEUP
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
