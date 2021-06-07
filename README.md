@@ -26,7 +26,7 @@ The dynamic analysis is performed using a desktop application connected to the m
 ## Future Work
 
 
-## Contact
+## Contributions
 
 Ana Paiva - apaiva@fe.up.pt
 
