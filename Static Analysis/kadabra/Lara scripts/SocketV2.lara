@@ -5,11 +5,11 @@ import kadabra.Factory;
 
 aspectdef Socket
 	//schemaXSD();
-	extractDependencyGraph();
-	extractIntents();
 	addSocketObjectAndMainClass();
 	addCodeActivities();
 	addFragments();
+	extractDependencyGraph();
+	extractIntents();
 	
 end
 
@@ -24,7 +24,7 @@ function addSocketObjectAndMainClass(){
 	for(var mainClass of Query.search("class")){
 		
 		// main activity constraint for validation
-		if(mainClass.name === "MainActivity"  ){
+		if(mainClass.name === "MainActivity" || mainClass.name === "HomeActivity" ){
 			var importAsync = "import android.os.AsyncTask;import java.io.IOException;import java.io.PrintWriter;import java.net.Socket;";
  			mainClass.insertBefore(importAsync);
  			mainClass.insertCode(instanciateString);
@@ -98,7 +98,7 @@ function addCodeActivities(){
 
 	for(var activityClasses of Query.search("class")){
 		// activities constraint for validation
-		if(activityClasses.name !== "MainActivity" && (activityClasses.superClass === "AppCompatActivity" || activityClasses.superClass ===  "AppDefaultActivity")){
+		if(activityClasses.name !== "MainActivity"  &&  activityClasses.superClass ===  "android.support.v7.app.AppCompatActivity"){
 			activityClasses.insertCode(instanciateString);
 			
 			var methodCreate = Query.searchFrom(activityClasses, "method", "onCreate").get();
@@ -170,7 +170,7 @@ function addFragments(){
 	
 	for(var fragmentClasses of Query.search("class")){
 	// fragments constraint for validation
-		if(fragmentClasses.superClass === "Fragment" || fragmentClasses.superClass === "AppDefaultFragment"){
+		if(fragmentClasses.superClass === "android.support.v4.app.Fragment"){
 			fragmentClasses.insertCode(instanciateString);
 			
 			var methodCreate = Query.searchFrom(fragmentClasses, "method", "onCreate").get();
