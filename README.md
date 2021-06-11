@@ -26,19 +26,19 @@ The dynamic analysis is performed using a desktop application connected to the m
 ## Future Work
 
 
-## Contact
+## Contributions
 
-Ana Paiva - apaiva@fe.up.pt
+Master Student: Francisco Serrão - franciscoserrao@me.com
 
-Francisco Serrão - franciscoserrao@me.com
+Supervisor: Nuno Flores - nuno.flores@gmail.com
 
-Nuno Flores - nuno.flores@gmail.com
+Co-Supervisor: Ana Paiva - apaiva@fe.up.pt
 
-João Bispo - joaobispo@gmail.com 
+Research Colaborator: João Bispo - joaobispo@gmail.com 
 
 ## License
 
-Copyright 2021 [name of copyright owner]
+Copyright 2021 University of Porto - FEUP
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
