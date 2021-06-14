@@ -21,7 +21,6 @@ public class MainFrameServer extends javax.swing.JFrame {
         activityBtn = new javax.swing.JButton();
         fragmentsBtn = new javax.swing.JButton();
         mainLabelTitle = new javax.swing.JLabel();
-        usBtn = new javax.swing.JButton();
         combinedBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -43,13 +42,6 @@ public class MainFrameServer extends javax.swing.JFrame {
 
         mainLabelTitle.setFont(new java.awt.Font("Apple Color Emoji", 0, 17)); // NOI18N
         mainLabelTitle.setText("Welcome to SEMANTIC Desktop Tool !");
-
-        usBtn.setText("About Us");
-        usBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usBtnActionPerformed(evt);
-            }
-        });
 
         combinedBtn.setText("Combined Analysis");
         combinedBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -77,8 +69,7 @@ public class MainFrameServer extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(activityBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(fragmentsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(combinedBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(usBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(combinedBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -94,9 +85,7 @@ public class MainFrameServer extends javax.swing.JFrame {
                 .addComponent(fragmentsBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(combinedBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(usBtn)
-                .addContainerGap())
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
@@ -126,10 +115,6 @@ public class MainFrameServer extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_fragmentsBtnActionPerformed
 
-    private void usBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usBtnActionPerformed
-       
-    }//GEN-LAST:event_usBtnActionPerformed
-
     private void combinedBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combinedBtnActionPerformed
         CombinedAnalysisJFrame combined = new CombinedAnalysisJFrame();
         combined.setVisible(true);
@@ -156,6 +141,5 @@ public class MainFrameServer extends javax.swing.JFrame {
     private javax.swing.JButton fragmentsBtn;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel mainLabelTitle;
-    private javax.swing.JButton usBtn;
     // End of variables declaration//GEN-END:variables
 }

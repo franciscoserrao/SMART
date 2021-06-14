@@ -39,7 +39,6 @@
                           <Component id="activityBtn" max="32767" attributes="0"/>
                           <Component id="fragmentsBtn" pref="0" max="32767" attributes="0"/>
                           <Component id="combinedBtn" alignment="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="usBtn" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -60,9 +59,7 @@
               <Component id="fragmentsBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="combinedBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="usBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="29" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -91,14 +88,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Welcome to SEMANTIC Desktop Tool !"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="usBtn">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="About Us"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="usBtnActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="combinedBtn">
       <Properties>
