@@ -25,6 +25,12 @@ The dynamic analysis is performed using a desktop application connected to the m
 
 ## Future Work
 
+Regarding future work, SEMANTIC has some limitations that can be improved in future iterations. Starting with code transformation, SEMANTIC's future work should involve the implementation of a method to scan for the launcher activity dynamically which would improve SEMANTIC's versatility to handle applications. 
+
+In the case of activities and fragments the implementation of a way to find the classes correspondent to these elements dynamically will also be implemented as future work. Searching for all fragments' sub classes (e.g., FragmentActivity, ListFragment ,etc.) will enrich SEMANTIC's quality widening its use cases to applications that may not use directly the class "Fragment".
+
+Moreover, a nice-to-have requirement that may be implemented is a method that sends information from the desktop app back to the mobile app informing that the correct life-cycle method was already displayed.
+
 
 ## Contributions
 
