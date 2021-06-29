@@ -1,6 +1,6 @@
 # Utilization Manual
 
-This documents comes to show an example on how to apply the entire proposed methodology (SEMANTIC) to an aplication under analysis.
+This documents comes to show an example on how to apply the entire proposed methodology (SMART) to an aplication under analysis.
 
 In order to complete the process, there is the need to already have installed some prerequisites. Please refer to the [Installation Manual](/Manuals/InstallationManual.md) to access the links for downloading the needed software.
 
