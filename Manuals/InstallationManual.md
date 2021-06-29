@@ -1,6 +1,6 @@
 # Installation Manual
 
-The installation guide describes the instructions related to the installation of SEMANTIC divided into two different parts: **Kadabra Weaver Tool** (Static Analysis component) and the **SEMANTIC Desktop App** (Dynamic Analysis component). Before installing any of the two, one must ensure that some prerequisites are followed. 
+The installation guide describes the instructions related to the installation of SMART divided into two different parts: **Kadabra Weaver Tool** (Static Analysis component) and the **SMART Desktop App** (Dynamic Analysis component). Before installing any of the two, one must ensure that some prerequisites are followed. 
 
 In the first stage, the following softwares must be installed:
 
