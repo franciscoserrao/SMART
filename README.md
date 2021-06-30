@@ -34,7 +34,7 @@ Moreover, a nice-to-have requirement that may be implemented is a method that se
 
 ## Contributions
 
-Master Student: Francisco Serrão - franciscoserrao@me.com
+MESW Student: Francisco Serrão - franciscoserrao@me.com
 
 Supervisor: Nuno Flores - nuno.flores@gmail.com
 
